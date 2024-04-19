@@ -1,5 +1,12 @@
 import PostCard from './PostCard';
-
+import { savePost, fetchPosts } from '../api/Posts';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 interface Post {
   id: number;
   userId: number;
@@ -12,9 +19,11 @@ interface FeedListProps {
 
 const FeedList = (props: FeedListProps) => {
   const { posts } = props;
+  const query = useQuery({ queryKey: ['todos'], queryFn: fetchPosts });
+
   const renderList = () => {
-    return posts.map((post) => {
-      return <PostCard {...post}></PostCard>;
+    return query.data?.map((post) => {
+      return <PostCard key={post.id} {...post}></PostCard>;
     });
   };
 

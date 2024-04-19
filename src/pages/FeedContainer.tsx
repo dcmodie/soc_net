@@ -3,13 +3,17 @@ import { savePost, fetchPosts } from '../api/Posts';
 import { useEffect, useState } from 'react';
 
 import EditPostModal from '../components/EditPostModal';
+
 const FeedContainer = () => {
   const [posts, setPosts] = useState([]);
+
+  //console.log('query ', query);
+
   useEffect(() => {
-    fetchPosts().then((result) => {
-      console.log('got posts in FeedContainer ', result);
-      setPosts(result);
-    });
+    // fetchPosts().then((result) => {
+    //   console.log('got posts in FeedContainer ', result);
+    //   setPosts(result);
+    // });
   }, []);
 
   return (

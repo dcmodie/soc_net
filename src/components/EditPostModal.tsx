@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
+import { savePost } from '../api/Posts';
 
 const customStyles = {
   content: {
@@ -31,6 +32,7 @@ function EditPostModal() {
 
   function closeModal() {
     //post the content
+    savePost({ id: 2345, text: text });
     setIsOpen(false);
   }
 

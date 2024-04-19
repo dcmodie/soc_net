@@ -1,10 +1,18 @@
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
 const savePost = async (postData) => {
   const postD = { userId: '222', text: 'hello' };
   const url = 'http://localhost:8000/posts/';
-  console.log('posting ', JSON.stringify(postD));
+  console.log('got data ', JSON.stringify(postData));
   const result = await fetch(url, {
     method: 'POST',
-    body: JSON.stringify(postD),
+    body: JSON.stringify(postData),
     headers: {
       'Content-Type': 'application/json',
       // 'Content-Type': 'application/x-www-form-urlencoded',
