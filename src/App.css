@@ -1,0 +1,22 @@
+.list-page{
+  border:1px solid;
+  margin:auto;
+  padding: 2rem;
+  text-align:center;
+  width:30%;
+  overflow: auto;
+  height:400px;
+}
+
+.list-item{
+  margin:auto;
+  width:90%;
+  border:1px solid;
+  height:100px;
+}
+
+.feed-container{
+  display:flex;
+  align-content: center;
+
+}
