@@ -1,13 +1,7 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { savePost } from '../api/Posts';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const customStyles = {
   content: {
