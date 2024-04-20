@@ -1,6 +1,13 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { savePost } from '../api/Posts';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const customStyles = {
   content: {
@@ -20,6 +27,17 @@ function EditPostModal() {
   const [text, setText] = useState('');
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: savePost,
+    onSuccess: () => {
+      // Invalidate and refetch
+      console.log('save post success');
+      queryClient.invalidateQueries({ queryKey: ['fetchPosts'] });
+      //queryClient.invalidateQueries({ queryKey: ['todos'] });
+    },
+  });
 
   function openModal() {
     setIsOpen(true);
@@ -31,8 +49,7 @@ function EditPostModal() {
   }
 
   function closeModal() {
-    //post the content
-    savePost({ id: 2345, text: text });
+    mutation.mutate({ userId: 1, text: text });
     setIsOpen(false);
   }
 

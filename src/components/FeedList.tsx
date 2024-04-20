@@ -19,7 +19,7 @@ interface FeedListProps {
 
 const FeedList = (props: FeedListProps) => {
   const { posts } = props;
-  const query = useQuery({ queryKey: ['todos'], queryFn: fetchPosts });
+  const query = useQuery({ queryKey: ['fetchPosts'], queryFn: fetchPosts });
 
   const renderList = () => {
     return query.data?.map((post) => {

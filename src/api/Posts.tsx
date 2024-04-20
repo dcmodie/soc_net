@@ -9,7 +9,7 @@ import {
 const savePost = async (postData) => {
   const postD = { userId: '222', text: 'hello' };
   const url = 'http://localhost:8000/posts/';
-  console.log('got data ', JSON.stringify(postData));
+  //console.log('got data for save', JSON.stringify(postData));
   const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(postData),
